@@ -9,7 +9,6 @@ const getCurrentUser = async(req: Request, res: Response) => {
 }
 
 const signIn = async(req: Request, res: Response) => {
-    console.log('User sign in')
     const { email, password } = req.body;
     
     const existingUser = await User.findOne({ email });
