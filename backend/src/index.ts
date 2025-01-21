@@ -10,6 +10,10 @@ const start = async() => {
         throw new Error('MONGO_URI must be defined.')
     }
 
+    if(!process.env.CORS_ORIGIN){
+        throw new Error('CORS_ORIGIN must be defined.')
+    }
+
     try{
         await moongose.connect(process.env.MONGO_URI);
         console.log('Connected to MongoDB')
