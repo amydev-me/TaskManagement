@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import useRequest from '../hooks/user-request';
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState('amy@gmail.com');
+    const [email, setEmail ] = useState('amy@gmail.com');
     const [password, setPassword] = useState('12345');
-    const { setUser } = useAuth();
+    const { setUser, getCurrentUser } = useAuth();
     const navigate = useNavigate();
 
     const { doRequest, errors } = useRequest({
@@ -14,6 +14,7 @@ const Login: React.FC = () => {
       method: 'post',
       onSuccess: (data) => { 
         setUser(data);
+        getCurrentUser();
         navigate('/');
       },
     });

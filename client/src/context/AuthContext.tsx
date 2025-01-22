@@ -10,7 +10,7 @@ interface AuthContextType {
   user: User | null;
   isLoading: boolean; 
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
-
+  getCurrentUser: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -46,7 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []); 
 
   return (
-    <AuthContext.Provider value={{ user,isLoading, setUser }}>
+    <AuthContext.Provider value={{ user,isLoading, setUser, getCurrentUser }}>
       {children}
     </AuthContext.Provider>
   );
